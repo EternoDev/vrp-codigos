@@ -142,3 +142,27 @@ RegisterCommand('festinha',function(source,args,rawCommand)
     end
 end)
 
+--------------------kick resoluçao
+AddEventHandler("kickRESOLUCAO",function()
+    local source = source
+    DropPlayer(source,"Voce foi desconectado por usar uma resolucao muito baixa.") --Notificacao que aparece para o player
+end)
+-----
+
+--------------------------------------------------------------------------
+--------------- ANUNCIO FESTA
+--------------------------------------------------------------------------
+RegisterCommand('festinha',function(source,args,rawCommand)
+    local user_id = vRP.getUserId(source)
+    if vRP.hasPermission(user_id,"event.permissao") or vRP.hasPermission(user_id,"admin.permissao") then
+        local identity = vRP.getUserIdentity(user_id)
+        local mensagem = vRP.prompt(source,"Mensagem:","")
+        if mensagem == "" then
+            return
+        end
+        vRPclient.setDiv(-1,"festinha"," @keyframes blinking {    0%{ background-color: #ff3d50; border: 2px solid #871924; opacity: 1.8; } 25%{ background-color: #d22d99; border: 2px solid #901f69; opacity: 0.8; } 50%{ background-color: #55d66b; border: 2px solid #126620; opacity: 0.8; } 75%{ background-color: #22e5e0; border: 2px solid #15928f; opacity: 0.8; } 100%{ background-color: #222291; border: 2px solid #6565f2; opacity: 0.8; }  } .div_festinha { font-size: 11px; font-family: arial; color: rgba(255, 255, 255,1); padding: 20px; bottom: 10%; right: 5%; max-width: 500px; position: absolute; -webkit-border-radius: 5px; animation: blinking 1s infinite; } bold { font-size: 16px; }","<bold>"..mensagem.."</bold><br><br>Festeiro(a): "..identity.name.." "..identity.firstname)
+        SetTimeout(7000,function()
+            vRPclient.removeDiv(-1,"festinha")
+        end)
+    end
+end)
