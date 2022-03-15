@@ -90,39 +90,13 @@ RegisterCommand('trintar',function(source,args,rawCommand)
          TriggerEvent("Notify","sucesso","Sucesso","Boost de fps desligado!")
      end
  end)
- Eterno.exe
-#9767
-💻Cursando Desenvolvimento de Sistemas
-
-[DEV] Alek — 09/03/2022
-Silenciador para arma
-
-vrp_player/client.lua 
-RegisterCommand("silenciador",function(source,args)
-	local ped = PlayerPedId()
-	if GetSelectedPedWeapon(ped) == GetHashKey("WEAPON_PISTOL") then
-		GiveWeaponComponentToPed(ped,GetHashKey("WEAPON_PISTOL"),GetHashKey("COMPONENT_AT_PI_SUPP_02"))
-	elseif GetSelectedPedWeapon(ped) == GetHashKey("WEAPON_PISTOL_MK2") then
-		GiveWeaponComponentToPed(ped,GetHashKey("WEAPON_PISTOL_MK2"),GetHashKey("COMPONENT_AT_PI_SUPP_02"))
-Expandir
-message.txt
-6 KB
 -----------------
 
 
 
 
-Kikar Player com Resolução Baixa
+--Kikar Player com Resolução Baixa
 
-Função: Kikar um Jogador com Resolução Muito baixa
--Configura Resolução 
--Configura Notificação 
-Créditos: Alek#5191
-
-DOU SUPORTE, SE QUISER QUE COLOCA LOG ME CHAMA PVD
-
-server.lua e client.lua De preferencia no vrp_player
-client.lua
 Citizen.CreateThread(function()
     local screenTimers = GetGameTimer()
 
@@ -142,41 +116,8 @@ Citizen.CreateThread(function()
 
         Citizen.Wait(1000)
     end
-end)
-
-
-server.lua
-AddEventHandler("kickRESOLUCAO",function()
-    local source = source
-    DropPlayer(source,"Voce foi desconectado por usar uma resolucao muito baixa.") --Notificacao que aparece para o player
-end)
---------------------
-
-
-
-/semems V2
-
-Função: Reanimar quando estiver sem paramédico na cidade
--Pagamento pra usar o comando
--Verifica se a pessoa está em coma
--Verifica se tem paramédico na cidade
--Notificações 
-Novidade:
--Contador de tempo pra pessoa usar o comando novamente
--Retirado algumas linha do código
--Adicionado um contador
-Créditos: Alek#5191
-
-MUITAS PESSOA ME PEDIRAM, MUITAS PESSOA PROCURAM ESSE COMANDO E NAO ACHAM, ENTAO RESOLVI FAZER E SOLTAR AQUI NA COMUNIDADE!!!
-
-SE FOR VAZAR O CODIGO, DEIXA MEUS CREDITOS POR FAVOR
-
-SE TIVER BUGADO ME CHAMA NO PVD PRA ARRUMAR S2
-
-DOU SUPORTE, SE QUISER QUE COLOCA LOG ME CHAMA PVD
-
-server.lua De preferencia no vrp_player
---/SEMEMS Feito por Alek#5191
+end)---------------
+--/SEMEMS 
 contador = {}
 RegisterCommand('semems',function(source,args,rawCommand) --COMANDO /semems
     local user_id = vRP.getUserId(source)
@@ -213,36 +154,7 @@ Citizen.CreateThread(function()
         end
     end
 end)
---------------------------------------
-
-
-
-Colocar coordenadas em qualquer log
-
-local ped = GetPlayerPed(source)
- local coords = GetEntityCoords(ped, true)
-
-
-" \n[CDS]: "..coords.x.. "," ..coords.y.. "," ..coords.z..
-
-
-Tutorial: https://www.youtube.com/watch?v=OAvjnvRex8I 
-YouTube
-Alekfps0
-Colocar coordenadas em qualquer log - FIVEM
-
-------------------------------------------------
-
-
-
-
-
-
-FPS ON/OFF
-
-
-vrp_player> client.lua
- 
+-----------------------------------------
 -- /FPS ON/OFF
 --------------------------------------------------------------
 RegisterCommand("fps",function(source,args)
@@ -256,34 +168,6 @@ RegisterCommand("fps",function(source,args)
 end)
  
 ------------------------------------------------
-
-
-
-
-
-Código pra bloquear Staff de se setar de ADM, e tirar a pessoa do grupo mesmo offline
-
-/ungroup mesmo com o player offline
-Bloquei de staff setar alguem de administrador ou VIP
-Log do /group
-
-Tutorial: https://www.youtube.com/watch?v=6FIAHkdlawY
-
-Dou suporte! 
-YouTube
-Alekfps0
-Código pra bloquear Staff de se setar de ADM, e tirar a pessoa do g...
-
-local webhookgroup = "" --Colocar sua webhook
-local webhookgroupadmin = "" --Colocar sua webhook
-
-vRP.prepare('vrp/getdatatable', "SELECT * FROM vrp_user_data WHERE user_id = @user_id AND dkey = 'vRP:datatable'" )
-vRP.prepare('vrp/attdatatable', "UPDATE vrp_user_data SET dvalue = @datatable WHERE user_id = @user_id AND dkey = 'vRP:datatable'")
-
-Expandir
-message_5.txt
-13 KB
-[DEV] Alek — 11/03/2022
 /pd, chat interno policia
 
 RegisterCommand('pd',function(source,args,rawCommand)
@@ -304,8 +188,7 @@ RegisterCommand('pd',function(source,args,rawCommand)
         end
     end
 end)
-[DEV] Alek — 11/03/2022
-Código Spawn de Armas
+
 
 -------------munição----------------
 wammo|WEAPON_SAWNOFFSHOTGUN
@@ -374,30 +257,7 @@ wbody|WEAPON_CROWBAR
 wbody|WEAPON_BOTTLE
 wbody|WEAPON_BAT
 wbody|WEAPON_DAGGER
-! Dn, O Brabo — 12/03/2022
-Função: Anuncio animado para todos (configure e permissao)
-Desenvolvedor: N/A
-Colocar em vrp_admin server.lua
---------------------------------------------------------------------------
---------------- ANUNCIO FESTA
---------------------------------------------------------------------------
-RegisterCommand('festinha',function(source,args,rawCommand)
-    local user_id = vRP.getUserId(source)
-    if vRP.hasPermission(user_id,"event.permissao") or vRP.hasPermission(user_id,"admin.permissao") then
-        local identity = vRP.getUserIdentity(user_id)
-        local mensagem = vRP.prompt(source,"Mensagem:","")
-        if mensagem == "" then
-            return
-        end
-        vRPclient.setDiv(-1,"festinha"," @keyframes blinking {    0%{ background-color: #ff3d50; border: 2px solid #871924; opacity: 1.8; } 25%{ background-color: #d22d99; border: 2px solid #901f69; opacity: 0.8; } 50%{ background-color: #55d66b; border: 2px solid #126620; opacity: 0.8; } 75%{ background-color: #22e5e0; border: 2px solid #15928f; opacity: 0.8; } 100%{ background-color: #222291; border: 2px solid #6565f2; opacity: 0.8; }  } .div_festinha { font-size: 11px; font-family: arial; color: rgba(255, 255, 255,1); padding: 20px; bottom: 10%; right: 5%; max-width: 500px; position: absolute; -webkit-border-radius: 5px; animation: blinking 1s infinite; } bold { font-size: 16px; }","<bold>"..mensagem.."</bold><br><br>Festeiro(a): "..identity.name.." "..identity.firstname)
-        SetTimeout(7000,function()
-            vRPclient.removeDiv(-1,"festinha")
-        end)
-    end
-end)
 Função: Pegar ip, Ping e Steam Hex de um player (configure e permissao)
-Desenvolvedor: N/A
-Colocar em vrp_admin server.lua
 --------------------------------------------------------------------------
 --------------- DADOS ID
 --------------------------------------------------------------------------
@@ -424,21 +284,15 @@ RegisterCommand('dados',function(source,args,rawCommand)
         end
     end
 end) 
-Função: Arrumar voz vazando
-Desenvolvedor: N/A
-Colocar em vrp_player client.lua o
 --------------------------------------------------------------------------
 --------------- FIX VOZ VAZANDO NO MUMBLE VOIP
 --------------------------------------------------------------------------
-Citizen.CreateThread(function()
-    while true do
-        Citizen.Wait(1000)
-        NetworkSetTalkerProximity(8.0)
-    end
-end)
-Função: Status do discord
-Desenvolvedor: N/A
-Colocar em qualquer client.lua ou dispacht.lua
+--Citizen.CreateThread(function()
+  --  while true do
+    --    Citizen.Wait(1000)
+      --  NetworkSetTalkerProximity(8.0)
+    --end
+--end)
 --------------------------------------------------------------------------
 ---------STATUS DO DISCORD------
 --------------------------------------------------------------------------
